@@ -22,7 +22,7 @@ async function combineFilesFromRepo({
     repoUrl.split("com/").pop()?.replace(".git", "").replace("/", "-") ||
     "repo";
   const gitUrl = repoUrl.includes(".git") ? repoUrl : `${repoUrl}.git`;
-  const tempDir = path.resolve("public", "in", `temp_${repoName}`);
+  const tempDir = path.resolve("public", "in", `${repoName}`);
   const outDir = path.resolve("public", "out");
   const date = new Date().toISOString().split("T")[0];
 
@@ -85,7 +85,7 @@ async function combineFilesFromRepo({
             excludeFolders.some((folder) => relativePath.includes(folder));
 
           if (isIncluded && !isExcluded && fileExtensions.includes(extension)) {
-            console.log(`Found file: ${relativePath}`);
+            // console.log(`Found file: ${relativePath}`);
             filesToCombine.push(filePath);
           }
         }

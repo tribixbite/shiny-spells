@@ -15,9 +15,3 @@ export const targets: Record<string, CombineFilesOptions> = {
     },
     // Add more targets as needed
   };
-
-  // const repoName =
-  //   repoUrl.split("com/").pop()?.replace(".git", "").replace("/", "-") ||
-  //   "repo";
-
-//     if (error instanceof Error && (error as any).code === "EBUSY") {
