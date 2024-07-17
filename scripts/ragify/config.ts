@@ -3,9 +3,15 @@ import { CombineFilesOptions } from "./ragify";
 export const targets: Record<string, CombineFilesOptions> = {
     discord: {
       repoUrl: "https://github.com/discordjs/discord.js",
+      fileExtensions: ["ts"],
+      includeFolders: ["builders"],
+      excludeFolders: [],
+    },
+    discordGuide: {
+      repoUrl: "https://github.com/discordjs/guide",
       fileExtensions: ["md"],
-      includeFolders: ["packages/builders/src/*"],
-      excludeFolders: [""],
+      includeFolders: ["guide"],
+      excludeFolders: ["branding", "vuepress", "additional-info", "sequelize"],
     },
     elysia: {
       repoUrl: "https://github.com/elysiajs/documentation",

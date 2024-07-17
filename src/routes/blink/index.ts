@@ -13,19 +13,19 @@ export default (app: App) => {
           actions: [
             {
               label: "Send $5",
-              href: "/api/sendcredits?amount=5"
+              href: "/api/sendcredits/5"
             },
             {
               label: "Send $20",
-              href: "/api/sendcredits?amount=20"
+              href: "/api/sendcredits/20"
             },
             {
               label: "Send $100",
-              href: "/api/sendcredits?amount=100"
+              href: "/api/sendcredits/100"
             },
             {
               label: "Custom Donation",
-              href: "/api/sendcredits?amount={amount}",
+              href: "/api/sendcredits/{amount}",
               parameters: [
                 {
                   name: "amount",

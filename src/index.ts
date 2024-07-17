@@ -12,7 +12,7 @@ import { rateLimit } from "elysia-rate-limit";
 const app = new Elysia()
 	.use(
 		cors({
-			origin: ["http://localhost:3000", "http://localhost:3001"],
+			origin: "*",// ["http://localhost:3000", "http://localhost:3001"],
 			allowedHeaders: ["Content-Type", "Authorization"],
 		}),
 	)
