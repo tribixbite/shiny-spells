@@ -1,11 +1,11 @@
-import { t } from "elysia";
+import type { App } from "@/index";
 import { cors } from "@elysiajs/cors";
-import { Connection, PublicKey, Transaction } from "@solana/web3.js";
 import {
   createTransferCheckedInstruction,
   getAssociatedTokenAddressSync,
 } from "@solana/spl-token";
-import type { App } from "@/index";
+import { Connection, PublicKey, Transaction } from "@solana/web3.js";
+import { t } from "elysia";
 
 // USDC token mint address on Solana mainnet
 const USDC_MINT = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
@@ -13,6 +13,9 @@ const USDC_MINT = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
 // Your donation recipient address
 const RECIPIENT_ADDRESS = "triQem2gDXHXweNceTKWGfDfN6AnpCHmjR745LXcbix";
 const rpcUrl = Bun.env.RPC_URL as string;
+const localhost = Bun.env.LOCALHOST as string;
+const basePath =
+  localhost === "true" ? "http://localhost:3000" : "https://shinyspells.com";
 
 export default (app: App) => {
   app
@@ -28,19 +31,19 @@ export default (app: App) => {
             actions: [
               {
                 label: "Send $5",
-                href: "/api/sendcredits/5",
+                href: `${basePath}/api/sendcredits/5`,
               },
               {
                 label: "Send $20",
-                href: "/api/sendcredits/20",
+                href: `${basePath}/api/sendcredits/20`,
               },
               {
                 label: "Send $100",
-                href: "/api/sendcredits/100",
+                href: `${basePath}/api/sendcredits/100`,
               },
               {
                 label: "Custom Donation",
-                href: "/api/sendcredits/{amount}",
+                href: `${basePath}/api/sendcredits/{amount}`,
                 parameters: [
                   {
                     name: "amount",
@@ -84,7 +87,7 @@ export default (app: App) => {
       }
     )
     .get(
-      "/api/sendcredits/:amount",
+      "/:amount",
       ({ params: { amount } }) => {
         return {
           icon: "https://shdw-drive.genesysgo.net/8Aa59VQz3JtP7LNL3wfmLyhNgtvcRsG1vvR7NPMw1GVN/triblink.webp",
@@ -106,12 +109,14 @@ export default (app: App) => {
       }
     )
     .post(
-      "/api/sendcredits/:amount",
+      "/:amount",
       async ({ params, body }) => {
         const { amount } = params;
         const { account } = body;
-
-        const amountInUsdcUnits = Math.floor(parseFloat(amount) * 1_000_000);
+        console.log({ amount, account });
+        const amountInUsdcUnits = Math.floor(
+          Number.parseFloat(amount) * 1_000_000
+        );
         const connection = new Connection(rpcUrl);
         const recipientAta = getAssociatedTokenAddressSync(
           USDC_MINT,

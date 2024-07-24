@@ -1,5 +1,5 @@
+import { logger } from "@/utils/logger";
 import Elysia from "elysia";
-import logger from "@/utils/logger";
 import {
 	BadGatewayException,
 	BadRequestException,

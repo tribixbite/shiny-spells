@@ -1,10 +1,10 @@
-import { t } from "elysia";
 import { password as bunPassword } from "bun";
+import { t } from "elysia";
 
-import type { App } from "@/index";
-import { db } from "@/db";
-import { BadRequestException } from "@/plugins/error/exceptions";
 import { lucia } from "@/auth/lucia";
+import { db } from "@/db";
+import type { App } from "@/index";
+import { BadRequestException } from "@/plugins/error/exceptions";
 
 export default (app: App) => {
 	app.post(

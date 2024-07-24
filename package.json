@@ -2,13 +2,16 @@
   "name": "elysiajs-drizzleORM-lucia-auth",
   "version": "1.0.50",
   "scripts": {
+    "ex": "bun build --compile --minify --sourcemap ./src/server.ts --outfile build/app && ./build/app",
     "test": "bun test --coverage",
     "dev": "bun run --watch src/index.ts",
-    "build": "bun build ./src/index.ts ./src/routes/**/**/* --outdir build --target bun",
-    "start": "bun build/index.js",
-    "biome:lint": "bunx @biomejs/biome lint --write src",
-    "biome:format": "bunx @biomejs/biome format --write src",
-    "biome:check": "bunx @biomejs/biome check --write src",
+    "b2": "bun build ./src/index.ts ./src/routes/**/**/* --outfile build/app",
+    "bin": "bun build --minify --sourcemap ./src/index.ts ./src/routes/**/**/* --outdir build --target bun",
+    "buildex": "bun build --compile --minify --sourcemap ./src/index.ts ./src/routes/**/**/* --outfile build/app",
+    "start": "tsc && bun ./src/index.ts",
+    "biome:lint": "bunx biome lint --write src",
+    "biome:format": "bunx biome format --write src",
+    "check": "bunx biome check --write src",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:rollback": "drizzle-kit rollback",
@@ -18,6 +21,7 @@
     "ragify": "bun run ./scripts/ragify/ragify.ts"
   },
   "dependencies": {
+    "@biomejs/biome": "^1.8.3",
     "@elysiajs/cors": "^1.0.2",
     "@elysiajs/swagger": "^1.0.5",
     "@lucia-auth/adapter-drizzle": "^1.0.7",
@@ -34,11 +38,15 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.2",
-    "bun-types": "latest",
+    "@types/bun": "^1.1.6",
     "drizzle-kit": "^0.22.7",
+    "lefthook": "^1.7.6",
     "pg": "^8.12.0",
-    "simple-git": "^3.25.0"
+    "simple-git": "^3.25.0",
+    "typescript": "^5.5.4"
   },
-  "module": "src/index.js"
+  "module": "index.js",
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }

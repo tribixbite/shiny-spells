@@ -1,6 +1,6 @@
-import { t } from "elysia";
 import { lucia } from "@/auth/lucia";
 import { BadRequestException } from "@/plugins/error/exceptions";
+import { t } from "elysia";
 
 import type { App } from "@/index";
 

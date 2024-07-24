@@ -1,0 +1,35 @@
+{
+	"icon": "https://yourdomain.com/path/to/icon.png",
+	"label": "Donate USDC",
+	"title": "Support Our Cause",
+	"description": "Choose an amount to donate in USDC to support our mission.",
+	"links": {
+		"actions": [
+			{
+				"label": "Donate $5",
+				"href": "/api/donate?amount=5"
+			},
+			{
+				"label": "Donate $20",
+				"href": "/api/donate?amount=20"
+			},
+			{
+				"label": "Donate $100",
+				"href": "/api/donate?amount=100"
+			},
+			{
+				"label": "Custom Donation",
+				"href": "/api/donate?amount={amount}",
+				"parameters": [
+					{
+						"name": "amount",
+						"label": "USDC amount"
+					}
+				]
+			}
+		]
+	},
+	"metadata": {
+		"recipient": "triQem2gDXHXweNceTKWGfDfN6AnpCHmjR745LXcbix"
+	}
+}

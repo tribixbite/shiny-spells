@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "bun ragify elysia",
+      "name": "Run npm start",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+    // {
+    //   "type": "node",
+    //   "request": "launch",
+    //   "name": "Debug Bun Script",
+    //   "skipFiles": ["<node_internals>/**"],
+    //   "program": "${workspaceFolder}/scripts/ragify/ragify.ts",
+    //   "outFiles": ["${workspaceFolder}/**/*.js"],
+    //   "preLaunchTask": "tsc: build - tsconfig.json"
+    // }
+  ]
+}

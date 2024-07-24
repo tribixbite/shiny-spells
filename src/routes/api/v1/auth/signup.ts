@@ -1,16 +1,16 @@
+import { password as bunPassword } from "bun";
 import { t } from "elysia";
 import { generateId } from "lucia";
 import { alphabet, generateRandomString } from "oslo/crypto";
-import { password as bunPassword } from "bun";
 
-import type { App } from "@/index";
+import { lucia } from "@/auth/lucia";
 import { db } from "@/db";
+import { users } from "@/db/schema";
+import type { App } from "@/index";
 import {
 	ConflictException,
 	InternalServerErrorException,
 } from "@/plugins/error/exceptions";
-import { lucia } from "@/auth/lucia";
-import { users } from "@/db/schema";
 
 export default (app: App) => {
 	app.post(

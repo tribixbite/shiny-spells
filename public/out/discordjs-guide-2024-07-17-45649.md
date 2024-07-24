@@ -6349,7 +6349,7 @@ In this panel, you can give your bot a snazzy avatar, set its username, and make
 
 A token is essentially your bot's password; it's what your bot uses to login to Discord. With that said, **it is vital that you do not ever share this token with anybody, purposely or accidentally**. If someone does manage to get a hold of your bot's token, they can use your bot as if it were theirs—this means they can perform malicious acts with it.
 
-Tokens look like this: `NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I` (don't worry, we immediately reset this token before even posting it here!). If it's any shorter and looks more like this: `kxbsDRU5UfAaiO7ar9GFMHSlmTwYaIYn`, you copied your client secret instead. Make sure to copy the token if you want your bot to work!
+Tokens are approximately 59 characters. If it's 32 characters, you copied your client secret instead. Make sure to copy the token if you want your bot to work!
 
 ### Token leak scenario
 

@@ -1,7 +1,7 @@
 import type { App } from "@/index";
-import signup from "./signup";
 import signin from "./signin";
 import signout from "./signout";
+import signup from "./signup";
 
 export default (app: App) => {
 	app.use(signup);

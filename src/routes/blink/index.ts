@@ -1,8 +1,11 @@
+import type { App } from "@index";
 import { t } from "elysia";
-import type { App } from "@/index";
-
+const localhost = Bun.env.LOCALHOST as string;
+const basePath =
+  localhost === "true" ? "http://localhost:3000" : "https://shinyspells.com";
 export default (app: App) => {
-  app.get("/",
+  app.get(
+    "/",
     () => {
       return {
         icon: "https://shdw-drive.genesysgo.net/8Aa59VQz3JtP7LNL3wfmLyhNgtvcRsG1vvR7NPMw1GVN/triblink.webp",
@@ -13,31 +16,31 @@ export default (app: App) => {
           actions: [
             {
               label: "Send $5",
-              href: "/api/sendcredits/5"
+              href: `${basePath}/api/sendcredits/5`,
             },
             {
               label: "Send $20",
-              href: "/api/sendcredits/20"
+              href: `${basePath}/api/sendcredits/20`,
             },
             {
               label: "Send $100",
-              href: "/api/sendcredits/100"
+              href: `${basePath}/api/sendcredits/100`,
             },
             {
               label: "Custom Donation",
-              href: "/api/sendcredits/{amount}",
+              href: `${basePath}/api/sendcredits/{amount}`,
               parameters: [
                 {
                   name: "amount",
-                  label: "USDC amount"
-                }
-              ]
-            }
-          ]
+                  label: "USDC amount",
+                },
+              ],
+            },
+          ],
         },
         metadata: {
-          recipient: "triQem2gDXHXweNceTKWGfDfN6AnpCHmjR745LXcbix"
-        }
+          recipient: "triQem2gDXHXweNceTKWGfDfN6AnpCHmjR745LXcbix",
+        },
       };
     },
     {
@@ -55,21 +58,22 @@ export default (app: App) => {
                 t.Array(
                   t.Object({
                     name: t.String(),
-                    label: t.String()
+                    label: t.String(),
                   })
                 )
-              )
+              ),
             })
-          )
+          ),
         }),
         metadata: t.Object({
-          recipient: t.String()
-        })
+          recipient: t.String(),
+        }),
       }),
       detail: {
-        description: "Blink action definition for sending credits to tribixbite",
-        tags: ["blink", "donation"]
-      }
+        description:
+          "Blink action definition for sending credits to tribixbite",
+        tags: ["blink", "donation"],
+      },
     }
   );
 

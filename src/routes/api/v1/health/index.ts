@@ -1,5 +1,5 @@
-import { t } from "elysia";
 import os from "node:os";
+import { t } from "elysia";
 
 import type { App } from "@/index";
 

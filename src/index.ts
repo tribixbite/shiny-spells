@@ -1,27 +1,27 @@
-import logger from "@/utils/logger";
+import path from "node:path";
+import { env } from "@/env";
 import cors from "@elysiajs/cors";
 import swagger from "@elysiajs/swagger";
+import { logger } from "@utils/logger";
 import { Elysia } from "elysia";
 import { autoroutes } from "elysia-autoroutes";
-import { db } from "./db";
-import { env } from "@/env";
-import path from "node:path";
-import { error } from "./plugins/error/error";
 import { rateLimit } from "elysia-rate-limit";
+import { db } from "./db";
+import { error } from "./plugins/error/error";
 
-const app = new Elysia()
+export const app = new Elysia()
 	.use(
 		cors({
-			origin: "*",// ["http://localhost:3000", "http://localhost:3001"],
+			origin: "*", // ["http://localhost:3000", "http://localhost:3001"],
 			allowedHeaders: ["Content-Type", "Authorization"],
 		}),
 	)
 	.use(swagger())
-	.use(
-		rateLimit({
-			max: 60,
-		}),
-	)
+	// .use(
+	// 	rateLimit({
+	// 		max: 60,
+	// 	}),
+	// )
 	.use(
 		autoroutes({
 			routesDir:
@@ -40,5 +40,4 @@ logger.info(
 	`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
 );
 
-export { app };
 export type App = typeof app;
