@@ -1,10 +1,14 @@
 
-[build.nixpacksPlan.phases.setup]
-nixPkgs = ["...", "yt-dlp"]
+
 
 [build]
 installCommand = "ls" # Specify any additional install commands if necessary
 buildCommand = "echo 'Build step complete'" # If no build step is needed
+[build.nixpacksPlan.phases.setup]
+nixPkgs = ["...", "yt-dlp"]
+[build.nixpacksPlan.phases.install]
+dependsOn = ["setup"]
+cmds=["ls -la"]
 
 [deploy]
-startCommand = "bun build/app" # Replace 'your_executable' with the actual executable you want to run
+startCommand = "bun ./build/app" # Replace 'your_executable' with the actual executable you want to run
