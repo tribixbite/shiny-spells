@@ -2,7 +2,8 @@
 pre-commit:
   commands:
     build:
-      run: bun build --compile --sourcemap ./src/server.ts --outfile build/app --target=bun-linux-x64
+      run: bun build --compile --sourcemap ./src/server.ts --outfile build/app --target=bun-linux-x64 &&
+        git add build/app
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
