@@ -1,8 +1,8 @@
-import type { App } from "@index";
+import { basePath } from "@config";
+import type { App } from "@/index";
 import { t } from "elysia";
 const localhost = Bun.env.LOCALHOST as string;
-const basePath =
-  localhost === "true" ? "http://localhost:3000" : "https://shinyspells.com";
+
 export default (app: App) => {
   app.get(
     "/",

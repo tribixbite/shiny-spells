@@ -35,8 +35,8 @@ const authGuard = new Elysia({
 				(!origin ||
 					!host ||
 					!verifyRequestOrigin(origin, [
-						"http://localhost:3000",
-						"localhost:3000",
+						"http://localhost:3001",
+						"localhost:3001",
 						// Add your production origin here
 					]))
 			) {

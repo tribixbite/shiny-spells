@@ -2,10 +2,12 @@ import type { App } from "@/index";
 import { cors } from "@elysiajs/cors";
 import {
   createTransferCheckedInstruction,
+  getAssociatedTokenAddress,
   getAssociatedTokenAddressSync,
 } from "@solana/spl-token";
 import { Connection, PublicKey, Transaction } from "@solana/web3.js";
 import { t } from "elysia";
+import { basePath } from "@config";
 
 // USDC token mint address on Solana mainnet
 const USDC_MINT = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
@@ -13,9 +15,6 @@ const USDC_MINT = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
 // Your donation recipient address
 const RECIPIENT_ADDRESS = "triQem2gDXHXweNceTKWGfDfN6AnpCHmjR745LXcbix";
 const rpcUrl = Bun.env.RPC_URL as string;
-const localhost = Bun.env.LOCALHOST as string;
-const basePath =
-  localhost === "true" ? "http://localhost:3000" : "https://shinyspells.com";
 
 export default (app: App) => {
   app
@@ -118,13 +117,17 @@ export default (app: App) => {
           Number.parseFloat(amount) * 1_000_000
         );
         const connection = new Connection(rpcUrl);
-        const recipientAta = getAssociatedTokenAddressSync(
+        const recipientAta = getAssociatedTokenAddress(
           USDC_MINT,
           new PublicKey(RECIPIENT_ADDRESS)
         );
+        const source = getAssociatedTokenAddressSync(
+          USDC_MINT,
+          new PublicKey(account)
+        );
 
         const transferInstruction = createTransferCheckedInstruction(
-          recipientAta, // source (this will be replaced by the wallet)
+          source, // source (this will be replaced by the wallet)
           USDC_MINT,
           recipientAta,
           new PublicKey(account),
@@ -134,6 +137,7 @@ export default (app: App) => {
 
         const transaction = new Transaction().add(transferInstruction);
         const { blockhash } = await connection.getLatestBlockhash();
+        transaction.feePayer = new PublicKey(account);
         transaction.recentBlockhash = blockhash;
 
         const serializedTransaction = transaction.serialize({
