@@ -7,4 +7,4 @@ installCommand = "ls" # Specify any additional install commands if necessary
 buildCommand = "echo 'Build step complete'" # If no build step is needed
 
 [deploy]
-startCommand = "./build/app" # Replace 'your_executable' with the actual executable you want to run
+startCommand = "bun build/app" # Replace 'your_executable' with the actual executable you want to run
