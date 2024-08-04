@@ -2,7 +2,7 @@
 pre-commit:
   commands:
     build:
-      run: bun build --compile --sourcemap ./src/server.ts --outfile build/app --target=bun-linux-x64 &&
+      run: bun build --compile --sourcemap ./src/server.ts --outfile build/app --target=bun-linux-x64-modern &&
         git add build/app &&
         chmod +x build/app
     check:
