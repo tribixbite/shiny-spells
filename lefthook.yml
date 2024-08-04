@@ -1,6 +1,9 @@
+# pre-commit hook https://biomejs.dev/recipes/git-hooks/
 pre-commit:
   commands:
+    build:
+      run: bun build --compile --sourcemap ./src/server.ts --outfile build/app
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
-      stage_fixed: true
+      # stage_fixed: true
