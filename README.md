@@ -6,12 +6,19 @@ To install dependencies:
 
 ```sh
 bun install
+npx lefthook install
 ```
 
 To run:
 
 ```sh
-bun run dev
+bun start
+```
+
+or to run the compiled executable:
+
+```sh
+bun buildex
 ```
 
 open `http://localhost:3001`
