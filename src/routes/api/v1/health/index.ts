@@ -1,7 +1,7 @@
 import os from "node:os";
 import { t } from "elysia";
 
-import type { App } from "@/index";
+import type { App } from "@server";
 
 export default (app: App) => {
 	app.get("/", () => ({ health: "ok" }), {

@@ -6,7 +6,7 @@ import { alphabet, generateRandomString } from "oslo/crypto";
 import { lucia } from "@/auth/lucia";
 import { db } from "@/db";
 import { users } from "@/db/schema";
-import type { App } from "@/index";
+import type { App } from "@server";
 import {
 	ConflictException,
 	InternalServerErrorException,

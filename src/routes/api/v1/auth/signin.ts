@@ -3,7 +3,7 @@ import { t } from "elysia";
 
 import { lucia } from "@/auth/lucia";
 import { db } from "@/db";
-import type { App } from "@/index";
+import type { App } from "@server";
 import { BadRequestException } from "@/plugins/error/exceptions";
 
 export default (app: App) => {

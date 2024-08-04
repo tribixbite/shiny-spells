@@ -1,6 +1,6 @@
 import { t } from "elysia";
 
-import type { App } from "@/index";
+import type { App } from "@server";
 import { authGuard } from "@/plugins/authGuard";
 
 export default (app: App) => {

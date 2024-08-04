@@ -1,5 +1,5 @@
 import { basePath } from "@config";
-import type { App } from "@/index";
+import type { App } from "@server";
 import { t } from "elysia";
 const localhost = Bun.env.LOCALHOST as string;
 

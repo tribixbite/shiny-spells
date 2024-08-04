@@ -1,4 +1,4 @@
-import type { App } from "@/index";
+import type { App } from "@server";
 import signin from "./signin";
 import signout from "./signout";
 import signup from "./signup";

@@ -1,4 +1,4 @@
-import type { App } from "@/index";
+import type { App } from "@server";
 import { cors } from "@elysiajs/cors";
 import {
   createTransferCheckedInstruction,
